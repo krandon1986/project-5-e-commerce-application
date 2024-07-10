@@ -42,6 +42,12 @@ body {
     color: rgb(236, 228, 228);
 }
 
+.btn-outline-black {
+    background: #fff;
+    color:#000 !important; /* to override the link color for the <a> elements */
+    border: 1px solid #000;
+}
+
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
