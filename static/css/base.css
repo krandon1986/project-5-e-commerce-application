@@ -14,6 +14,10 @@ body {
     font-family: "Overlock", sans-serif;
 }
 
+.order_form_color {
+    background-color:#f8f9fa;
+}
+
 /* from Bulma */
 .icon {
     align-items: center;
@@ -63,6 +67,7 @@ body {
 .text-black {
     color: #000 !important;
 }
+
 
 .border-black {
     border: 1px solid black !important;
