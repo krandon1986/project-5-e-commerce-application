@@ -11,10 +11,6 @@
 
         {% block extra_meta %}
             <!--Favicon-->
-            <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
-            <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
-            <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
-            <link rel="manifest" href="{% static 'favicon/site.webmanifests' %}">
             <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
         {% endblock %}
 
@@ -44,13 +40,17 @@
             <title>HardWear {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
+    <!--Logo Image and Header Name-->
     <header class="container-fluid fixed-top">
         <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                  <h2 class="logo-font text-black my-0"><strong>HardWear</strong></h2>
+                  <h2 class="logo-font text-black my-0">
+                    <img src="{{ MEDIA_URL }}logo.png" id="logo-main">
+                    <strong>HardWear</strong></h2>
                 </a>
             </div>
+            <!--Search Box-->
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <form method="GET" action="{% url 'products' %}">
                   <div class="input-group w-100">
@@ -65,6 +65,7 @@
                   </div>
                 </form>
             </div>
+            <!--Account Links-->
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                     <li class="list-inline-item dropdown">
@@ -87,6 +88,7 @@
                             {% endif %}
                         </div>
                     </li>
+                    <!--Bag and total Products in the bag-->
                     <li class="list-inline-item">
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
                             <div class="text-center">
@@ -114,6 +116,8 @@
                     {% include 'includes/main-nav.html' %}
                 </nav>
             </div>
+
+            <!--Free Discount Banner-->
             <div id="delivery-banner" class="row text-center">
                 <div class="col bg-discount text-black">
                   <h4 class="logo-font my-1"> Free delivery on order over ${{ free_delivery_threshold }}!</h4>
@@ -121,7 +125,8 @@
         </div>
         </div>
     </header>
-    
+
+    <!--Toasts/Messages-->
     {% if messages %}
         <div class="message-container">
             {% for message in messages %}

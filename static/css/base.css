@@ -35,6 +35,12 @@ body {
     width: fit-content;
 }
 
+#logo-main {
+    width: 60px;
+    height: auto;
+    border: none !important
+}
+
 /* ------ Buttons */
 
 .shop-now-button {
