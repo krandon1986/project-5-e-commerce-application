@@ -1,0 +1,22 @@
+Hello {{ order.full_name }}!
+
+This is a confirmation of your order at HardWare. Your order information is below:
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Order Total: ${{ order.order_total }}
+Delivery: ${{ order.grand_total }}
+Grand Total: ${{ order.grand_total }}
+
+Your order will be shipped to {{ order.street_address1 }} in {{ order.city_or_town }}, {{ order.country }}.
+
+This is your phone number: {{ order.phone_number }}.
+
+If you have any queries, please feel free to contact us at {{ contact_email }}.
+
+Thanks for your order!
+
+Sincerely,
+
+Site owner of HardWare. 
