@@ -25,7 +25,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-lg-6">
-                <p class="text-black text-muted">Default Deliver Information</p>
+                <p class="text-black text-muted">Default Delivery Information</p>
                 <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
                     {{ form|crispy }}
@@ -34,7 +34,43 @@
             </div>
             <div class="text-black col-lg-6">
                 <p class="text-black text-muted">Order History</p>
-                {{ orders }}
+                <div class="order-history table-responsive">
+                    <table class="table table-sm table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Order Number</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Order Total</th>                           
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for orders in orders %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'order_history' orders.order_number %}" 
+                                        title="{{ orders.order_number }}">
+                                            {{ orders.order_number|truncatechars:6 }}
+                                        </a>
+                                    </td>
+                                    <td>{{ orders.date }}</td>
+                                    <td>
+                                        <ul class="list-unstyled">
+                                            {% for item in orders.lineitems.all %}
+                                                <li class="small">
+                                                    {% if item.product.sizes %}
+                                                        Size {{ item.product.size|upper }}
+                                                    {% endif %}{{ item.product.name }} x{{ item.quantity }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td>{{ orders.grand_total }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 {% endblock %}
