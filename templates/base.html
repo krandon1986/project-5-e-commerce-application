@@ -1,5 +1,7 @@
 {% load static %}
+
 <!doctype html>
+
 <html lang="en">
   <head>
 
@@ -150,6 +152,31 @@
 
     {% block content %}
     {% endblock %}
+
+    <!--Footer-->
+    <footer class="footer mt-auto py-3 bg-light">
+        <p class="m-0 text-center text-black">
+            {% block copyright %}
+                Hardware (c)
+            {% endblock copyright %}
+        </p>
+        <!--Social Links-->
+        <p class="m-0 text-center text-black">
+            Follow us:
+            <a href="http://facebook.com" target="_blank" aria-label="Facebook">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://x.com" target="_blank" aria-label="X">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com" target="_blank" aria-label="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+        </p>
+    </footer>
 
     {% block postloadjs %}
     <script type="text/javascript">
