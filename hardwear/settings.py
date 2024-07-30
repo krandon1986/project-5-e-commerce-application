@@ -29,7 +29,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-krandon1986-project5eco-07vyxzt73ud.ws.codeinstitute-ide.net',
-    '.herokuapp.com'
+    'hardwear-1e19c988931d.herokuapp.com'
     ]
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-krandon1986-project5eco-07vyxzt73ud.ws.codeinstitute-ide.net',
