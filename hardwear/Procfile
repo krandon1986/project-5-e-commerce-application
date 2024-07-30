@@ -1,1 +1,1 @@
-web: gunicorn hardwear.wsgi:application
+web : gunicorn hardwear.wsgi:application
