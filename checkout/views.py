@@ -46,7 +46,7 @@ def checkout(request):
             'city_or_town': request.POST['city_or_town'],
             'street_address1': request.POST['street_address1'],
             'street_address2': request.POST['street_address2'],
-            'country': request.POST['country'],
+            'county': request.POST['county'],
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
@@ -106,7 +106,7 @@ def checkout(request):
             try:
                 profile = UserProfile.objects.get(user=request.user)
                 order_form = OrderForm(initial={
-                    'full_name':profile.user.get_full_name(),
+                    'full_name': profile.user.get_full_name(),
                     'email_address': profile.user.email,
                     'phone_number': profile.default_phone_number,
                     'country': profile.default_country,

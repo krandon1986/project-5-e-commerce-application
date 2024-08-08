@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404 
+)
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -29,9 +31,11 @@ def all_products(request):
                 sortkey = 'category__name'
             if 'direction' in request.GET:
                 direction = request.GET['direction']
+                
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
+
 
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
@@ -91,7 +95,7 @@ def add_product(request):
         
     template = 'products/add_product.html'
     context = {
-        'form': form, 
+        'form': form,
     }
 
     return render(request, template, context)

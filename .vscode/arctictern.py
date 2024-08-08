@@ -17,32 +17,33 @@ COLOURS = {"red": "\033[31m",
            "reset": "\033[0m",
            "bold": "\033[1m"}
 
-BASE_URL = "https://raw.githubusercontent.com/Code-Institute-Org/gitpod-full-template/main/"
+BASE_URL = (
+"https://raw.githubusercontent.com/Code-Institute-Org/gitpod-full-template/main/")
 CURRENT_VERSION = 1.0
 THIS_VERSION = 1.0
 
 
 UPGRADE_FILE_LIST = [{"filename": ".vscode/settings.json",
                       "url": ".vscode/settings.json"
-                      },
+                     },
                      {"filename": ".vscode/launch.json",
                       "url": ".vscode/launch.json"
-                      },
+                     },
                      {"filename": ".gitpod.yml",
                       "url": ".gitpod.yml"
-                      },
+                     },
                      {"filename": ".gitpod.dockerfile",
                       "url": ".gitpod.dockerfile"
-                      },
+                     },
                      {"filename": ".vscode/heroku_config.sh",
                       "url": ".vscode/heroku_config.sh"
-                      },
+                     },
                      {"filename": ".vscode/init_tasks.sh",
                       "url": ".vscode/init_tasks.sh"
-                      },
+                     },
                      {"filename": ".vscode/uptime.sh",
                       "url": ".vscode/uptime.sh"
-                      },
+                     },
                      {"filename": ".vscode/make_url.py",
                       "url": ".vscode/make_url.py"
                      },
