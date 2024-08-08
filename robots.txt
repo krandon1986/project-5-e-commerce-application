@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /admin/
+Disallow: /bag/ 
+Disallow: /profiles/
+Disallow: /checkout/
+Sitemap: https://hardwear-1e19c988931d.herokuapp.com/sitemap.xml
