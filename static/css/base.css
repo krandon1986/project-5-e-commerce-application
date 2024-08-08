@@ -330,6 +330,10 @@ input[name='q']::placeholder {
         font-size: .75rem;
     }
 
+    .btn-black {
+        font-size: .75rem
+    }
+
     .shop-now-button {
         font-size: .75rem
     }
