@@ -1,10 +1,34 @@
 # HardWear
 
-This is my e-commerce site which sells clothes and homeware, such as bed and bath items and kitchen silverware. The name of this site is a play of word with the hardware, but spelt hardwear. Django is what I mainly use to build this site along with a Python back-end development to handle the code that is used to make the site work properly. To make colorful site without having a lot of code in the CSS file, I used the Bootstrap front-end (CSS) framework, along as font awesome to make icons for the checkout and login pages. To be able to allow a credit/debit card transaction via the checkout, Stripe will be connectted to the site with webhooks. 
+This is my e-commerce site which sells clothes and homeware, such as bed and bath items and kitchen silverware. The name of this site is a play of word with the hardware, but spelt hardwear. Django is what I mainly will use to build this site along with a Python back-end development to handle the code that is used to make the site work properly. To make it colorful site without having a lot of code in the CSS file, I used the Bootstrap front-end (CSS) framework, along as font awesome to make icons for the checkout and login pages. To be able to allow a credit/debit card transaction via the checkout, Stripe will be connectted to the site with webhooks. 
 ![Responsive website image](static/screenshots/amiresponsive.png)
 Visit the live site - [HardWare](https://hardwear-1e19c988931d.herokuapp.com/)
 
 ---
+## CONTENTS
+
+* [Design](#design)
+
+* [Database Design](#database-design)
+
+* [User Stories](#user-stories)
+  * [Shopper](#shopper)
+  * [Site User](#site-user)
+  * [Admin/Store Owner](#adminstore-owner)
+
+* [E-Commerce Business Model](#e-commerce-business-model)
+
+* [Facebook Marketing](#facebook-marketing)
+
+* [SEO](#seo)
+
+* [Admin Page](#admin-page)
+
+* [Customised Error Handlers](#customised-error-handlers)
+
+* [Deployment](#deployment)
+
+* [Credit](#credit)
 
 ---
 
@@ -285,7 +309,7 @@ To see the full list, click [here.](https://github.com/users/krandon1986/project
     <br>
 
 
-#### **Site User**
+## **Site User**
 * [User Story # 4](https://github.com/krandon1986/project-5-e-commerce-application/issues/4) 
     
   <details>
@@ -321,7 +345,7 @@ To see the full list, click [here.](https://github.com/users/krandon1986/project
 
     
 
-#### **Admin/Store Owner**
+## **Admin/Store Owner**
 * [User Story # 20](https://github.com/krandon1986/project-5-e-commerce-application/issues/20) 
     
     <details>
@@ -353,7 +377,7 @@ To see the full list, click [here.](https://github.com/users/krandon1986/project
 
 Hardwear is a business-to-consume model that sells shirts, jeans, duvets, and kitchenware directly to the customer. The customers can get a free delivery of any orders if they spend over $40., otherwise they will get charge $3.60 for delivery. The site is advertised on Facebook, but the other social links (X, Instagram and YouTube) would lead to the home page. Advertising on Facebook will help gain traction and a customer base depending on the post I would have to post in a regular. Users can sign-up to a newsletter when they visit the site. As the owner, I will be able to manage product detail and user's detail alreadu logged onto the site via Djando admin.
 
-### **Facebook Marketing**
+## **Facebook Marketing**
 
 A business page has been made on Facebook when the site is connected to. The [Facebook link](https://www.facebook.com/profile.php?id=61563878406440) is available at this moment, but there is possiblity that the page could be taken down in the near future. So here is screenshot of the page as proof:
 
@@ -363,7 +387,7 @@ A business page has been made on Facebook when the site is connected to. The [Fa
 ![Facebook Pic](static/screenshots/facebook-page.png)
 </details>
 
-### **SEO**
+## **SEO**
 
 Along with Facebook page to promote the site, it has a newsletter subscription which is supported via MailChimp to user to to keep in touch the site and receive newsletter once in while (if I was planning to make it a legit website)
 
@@ -375,11 +399,58 @@ Along with Facebook page to promote the site, it has a newsletter subscription w
 </details>
 
 
-## **Admin Page 
+## **Admin Page** 
+Admin User: karadmin
+
+Password: fitted@2024
+
+<details>
+<summary>Django Admin Login Details</summary>
+
+![Django Admin Loginpage](static/screenshots/django-admin.png)
+</details>
+<br>
+
+<details>
+<summary>Django Admin Edit Product</summary>
+
+![Django Product Edit 1](static/screenshots/django-product-edit1.png)
+![Django Product Edit 2](static/screenshots/django-product-edit2.png)
+![Django Product Edit 3](static/screenshots/django-product-edit3.png)
+</details>
+<br>
+
+<details>
+<summary>Django Admin Delete Product</summary>
+
+![Django Product Delete 1](static/screenshots/django-product-delete1.png)
+![Django Product Delete 2](static/screenshots/django-product-delete2.png)
+</details>
+<br>
+
+<details>
+<summary>Django Admin Add Product</summary>
+
+![Django Add Product 1](static/screenshots/django-add-product1.png)
+![Django Add Product 2](static/screenshots/django-add-product2.png)
+</details>
 
 
+## **Customised Error Handlers**
+When the site's server is down or the user goes to a non-existing page on the site, the browser go to a blank white screen with a suitable error message being displayed. I've created two customised error handler pages that will have same layout as the rest of the site. 
 
+<details>
+<summary>Error 404</summary>
 
+![Error 404](static/screenshots/error404.png)
+</details>
+<br>
+
+<details>
+<summary>Error 500</summary>
+
+![Error 500](static/screenshots/error500.png)
+</details>
 
 ## **Deployment**
 This project was deployed in Heroduk using the Code Institute's terminal.
@@ -393,7 +464,7 @@ This project was deployed in Heroduk using the Code Institute's terminal.
     - Link the Heroku app to the blogspace repository.
     - Click [Deploy Branch](https://blogspace-97bdcd968196.herokuapp.com/)
 
-## Credit
+## **Credit**
 - The 'Boutique Ado' walkthrough project is what I use to build my project. 
 
 - General Guidance
@@ -402,5 +473,6 @@ This project was deployed in Heroduk using the Code Institute's terminal.
     - [Stipe](https://stripe.com/)
     - [AWS](https://docs.aws.amazon.com/)
     - [Mailchimp](https://mailchimp.com/?currency=GBP)
-    - 
+    - [Kaggle](https://www.kaggle.com/)
+
 
