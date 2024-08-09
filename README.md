@@ -1,28 +1,356 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# HardWear
 
-Welcome Karim Randon,
+This is my e-commerce site which sells clothes and homeware, such as bed and bath items and kitchen silverware. The name of this site is a play of word with the hardware, but spelt hardwear. Django is what I mainly use to build this site along with a Python back-end development to handle the code that is used to make the site work properly. To make colorful site without having a lot of code in the CSS file, I used the Bootstrap front-end (CSS) framework, along as font awesome to make icons for the checkout and login pages. To be able to allow a credit/debit card transaction via the checkout, Stripe will be connectted to the site with webhooks. 
+![Responsive website image](static/screenshots/amiresponsive.png)
+Visit the live site - [HardWare](https://hardwear-1e19c988931d.herokuapp.com/)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+---
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+---
 
-## Gitpod Reminders
+## **Design**
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+  - This site will have two main colors, grey and white, with the display banner being yellow. 
+  - The navigation and footage sections will be white while the center would be either grey execept for the index page as it have image of smiling woman in front of a yellow wall to match the display banner. 
+  - The two main google fonts that I used for this site are Overlock and Nunito as I researched and find out that both fonts work together for a store that sells clothing, which this site partly does. 
 
-`python3 -m http.server`
+<details>
+<summary>Google Fonts:</summary>
 
-A blue button should appear to click: _Make Public_,
+![Google Fonts](static/screenshots/google-fonts.png)
+</details>
+<br>
 
-Another blue button should appear to click: _Open Browser_.
+- __Wireframe__
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+  -  This is the home page of the site.
+<br>
 
-A blue button should appear to click: _Make Public_,
+  <details>
+  <summary>Home Page:</summary>
 
-Another blue button should appear to click: _Open Browser_.
+  ![Home Page](static/screenshots/home-page.png)
+  </details>
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+  -  This page will contain all the products on the site.
+
+  <details>
+  <summary>Products Page:</summary>
+
+  ![Products Page](static/screenshots/product-page.png)
+  </details> 
+  
+  - This page will have information each product where the user can select a size (if available) and the quanity before adding to bag on the top right of the page.
+
+  <details>
+  <summary>Product Info Page:</summary>
+
+  ![Product Info Page](static/screenshots/product-info-page.png)
+  </details> 
+
+  - This page will contain the item the user has put in their bag and ready to purchase.
+
+  <details>
+  <summary>Bag Page:</summary>
+
+  ![Bag Page](static/screenshots/bag-page.png)
+  </details> 
+
+  - This page is where the user can checkout their items by filing in the form and enter their payment detail.
+
+  <details>
+  <summary>Checkout Page:</summary>
+
+  ![Checkout Page](static/screenshots/product-checkout-page.png)
+  </details> 
+
+  - This is where the user can sign in. 
+
+  <details>
+  <summary>Signin page:</summary>
+
+  ![Signin Page](static/screenshots/sigin-page.png)
+  </details> 
+
+  - This is where user can sign up. 
+
+  <details>
+  <summary>Signup Page:</summary>
+
+  ![Signup Page](static/screenshots/signup-page.png)
+  </details> 
+
+### **Database Design**
+
+This site has six database model and the checkout app has two. One is Order and the other is OrderLineItem models
+
+- Order Model:
+
+|Name|Database Key|Field Type|Validation|
+|---|---|---|---|
+|order_number|order_number|CharField|max_length=32, null=False, editable=False| 
+|user_profile|user_profile|ForeignKey|UserProfile, on_delete=models.SET_NULL,null=True, blank=True, related_name='orders'|
+|full_name |full_name |CharField|max_length=50, null=False, blank=False|
+|email_address |email_address|EmailField|max_length=254, null=False, blank=False|
+|phone_number|phone_number|CharField|max_length=20, null=False, blank=False|
+|country|country|CountryField|blank_label='Country *', null=False, blank=False|
+|postcode|postcode|CharField|max_length=20, null=True, blank=True|
+|city_or_town|city_or_town|CharField|max_length=40, null=False, blank=False|
+|street_address1|street_address1|CharField|max_length=80, null=False, blank=False|
+|street_address2|street_address2|CharField|max_length=80, null=True, blank=True|
+|county|county|CharField|max_length=80, null=True, blank=True|
+|date|date|DateTimeField|auto_now_add=True|
+|delivery_cost|delivery_cost|DecimalField|max_digits=6, decimal_places=2, null=False, default=0|
+|order_total|order_total|DecimalField|max_digits=10, decimal_places=2, null=False, default=0|
+|grand_total|grand_total|DecimalField|max_digits=10, decimal_places=2, null=False, default=0|
+|original_bag|original_bag|TextField|null=False, blank=False, default=''|
+|stripe_pid|stripe_pid|CharField|max_length=254, null=False, blank=False, default=''|
+
+- OrderLineItem Model:
+
+|Name|Database Key|Field Type|Validation|
+|---|---|---|---|
+|order|order|ForeignKey|Orders, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems'|
+|product|product|ForeignKey|Product, null=False, blank=False, on_delete=models.CASCADE|
+|product_size|product_size|CharField|max_length=2, null=True, blank=True|
+|quantity|quantity|IntegerField|null=False, blank=False, default=0|
+|lineitem_total|lineitem_total|DecimalField|max_digits=6, decimal_places=2, null=False, blank=False, editable=False|
+
+- Category Model:
+
+|Name|Database Key|Field Type|Validation|
+|---|---|---|---|
+|name|name|CharField|max_length=254|
+|friendly_name|friendly_name|CharField|max_length=254, null=True, blank=True|
+
+- Product Model:
+
+|Name|Database Key|Field Type|Validation|
+|---|---|---|---|
+|category|category|ForeignKey|'Category', null=True, blank=True, on_delete=models.SET_NULL|
+|sku|sku|CharField|max_length=254, null=True, blank=True|
+|name|name|CharField|max_length=254|
+|description|description|TextField|   |
+|sizes|sizes|BooleanField|default=False, null=True, blank=True|
+|price|price|DecimalField|max_digits=6, decimal_places=2|
+|rating|rating|rating|DecimalField|max_digits=6, decimal_places=2, null=True, blank=True|
+|image_url|image_url|URLField|max_length=1024, null=True, blank=True|
+|image|image|ImageField|null=True, blank=True|
+
+- UserProfile Model:
+
+|Name|Database Key|Field Type|Validation|
+|---|---|---|---|
+|user|user|OneToOneField|User, on_delete=models.CASCADE|
+|default_phone_number|default_phone_number|CharField|max_length=20, null=True, blank=True|
+|default_street_address1|default_street_address1|CharField| max_length=80, null=True, blank=True|
+|default_street_address2|default_street_address2|CharField|max_length=80, null=True, blank=True|
+|default_city_or_town|default_city_or_town|CharField|max_length=40, null=True, blank=True|
+|default_county|default_county|CharField|max_length=80, null=True, blank=True|
+|default_postcode|default_postcode|CharField|max_length=20, null=True, blank=True|
+|default_country|default_country|CountryField| blank_label='Country', null=True, blank=True|
+
+## **User Stories**
+
+These user stories were developed for the project using Agile development methodology.
+To see the full list, click [here.](https://github.com/users/krandon1986/projects/7/views/1 "Link to HardWear Project" ) to User Story Project. 
+
+#### **Shopper**
+* [User Story # 1](https://github.com/krandon1986/project-5-e-commerce-application/issues/1) 
+    
+  <details>
+  <summary>View Product</summary>
+
+    ![User Story 1](static/screenshots/User-Story-1.png)
+    </details> 
+    <br>
+
+* [User Story # 2](https://github.com/krandon1986/project-5-e-commerce-application/issues/2)
+    
+    <details>
+    <summary>Special Deals or Offer</summary>
+
+    ![User Story 2](static/screenshots/user-story-2.png)
+    </details>
+    <br>
+
+* [User Story #3](https://github.com/krandon1986/project-5-e-commerce-application/issues/3)
+
+    <details>
+    <summary>View Purchase Total</summary>
+
+    ![User Story 3](static/screenshots/user-story-3.png)
+    </details>
+    <br>
+  
+* [User Story #9](https://github.com/krandon1986/project-5-e-commerce-application/issues/9)
+    
+    <details>
+    <summary>Sorting List of Products</summary>
+
+    ![User Story 9](static/screenshots/user-story-9.png)
+    </details>
+    <br>
+
+* [User Story # 10](https://github.com/krandon1986/project-5-e-commerce-application/issues/10)
+    
+    <details>
+    <summary>Sorting a Specific Category</summary>
+
+    ![User Story 10](static/screenshots/user-story-10.png)
+    </details>
+    <br>
+
+* [User Story # 11](https://github.com/krandon1986/project-5-e-commerce-application/issues/11)
+    
+    <details>
+    <summary>Sorting Multiple Product Categories</summary>
+
+    ![User Story 11](static/screenshots/user-story-11.png)
+    </details>
+    <br>
+
+* [User Story # 12](https://github.com/krandon1986/project-5-e-commerce-application/issues/12)
+    
+    <details>
+    <summary>Product by Name and Description</summary>
+
+    ![User Story 12.1](static/screenshots/user-story-12.1.png)
+    ![User Story 12.2](static/screenshots/user-story-12.2.png)
+    </details>
+    <br>
+
+* [User Story # 13](https://github.com/krandon1986/project-5-e-commerce-application/issues/13)
+    
+    <details>
+    <summary>Previous Search Result</summary>
+
+    ![User Story 13](static/screenshots/user-story-13.png)
+    </details>
+    <br>
+
+* [User Story # 14](https://github.com/krandon1986/project-5-e-commerce-application/issues/14)
+    
+    <details>
+    <summary>Product's Size and Quantity</summary>
+
+    ![User Story 14](static/screenshots/user-story-14.png)
+    </details>
+    <br>
+
+* [User Story # 15](https://github.com/krandon1986/project-5-e-commerce-application/issues/15)
+    
+    <details>
+    <summary>Viewing Items</summary>
+
+    ![User Story 15](static/screenshots/user-story-15.png)
+    </details>
+    <br>
+
+* [User Story # 16](https://github.com/krandon1986/project-5-e-commerce-application/issues/16)
+    
+    <details>
+    <summary>Product Quantity Adjustment</summary>
+
+    ![User Story 16](static/screenshots/user-story-16.png)
+    </details>
+    <br>
+
+* [User Story # 17](https://github.com/krandon1986/project-5-e-commerce-application/issues/17)
+    
+    <details>
+    <summary>User Payment Information</summary>
+
+    ![User Story 17](static/screenshots/user-story-17.png)
+    </details>
+    <br>
+
+* [User Story # 18](https://github.com/krandon1986/project-5-e-commerce-application/issues/18)
+    
+    <details>
+    <summary>User Personal and Payment Confidentiality</summary>
+
+    ![User Story 18](static/screenshots/user-story-18.png)
+    </details>
+    <br>
+
+* [User Story # 19](https://github.com/krandon1986/project-5-e-commerce-application/issues/19)
+    
+    <details>
+    <summary>Order Confirmation</summary>
+
+    ![User Story 19.1](static/screenshots/user-story-19.1.png)
+    ![User Story 19.2](static/screenshots/user-story-19.2.png)
+    </details>
+    <br>
+
+
+#### **Site User**
+* [User Story # 4](https://github.com/krandon1986/project-5-e-commerce-application/issues/4) 
+    
+  <details>
+  <summary>Account Registration</summary>
+
+    ![User Story 4.1](static/screenshots/user-story-4.1.png)
+    ![User Story 4.2](static/screenshots/user-story-4.2.png)
+    ![User Story 4.3](static/screenshots/user-story-4.3.png)
+    ![User Story 4.4](static/screenshots/user-story-4.4.png)
+    ![User Story 4.5](static/screenshots/user-story-4.5.png)
+    </details> 
+    <br>
+
+* [User Story # 5](https://github.com/krandon1986/project-5-e-commerce-application/issues/5)
+    
+    <details>
+    <summary>Login/Logout</summary>
+
+    ![User Story 5.1](static/screenshots/user-story-5.1.png)
+    ![User Story 5.2](static/screenshots/user-story-5.2.png)
+    </details>
+    <br>
+
+* [User Story # 6](https://github.com/krandon1986/project-5-e-commerce-application/issues/6)
+    
+    <details>
+    <summary>Password Recovery</summary>
+
+    ![User Story 6.1](static/screenshots/user-story-6.1.png)
+    ![User Story 6.2](static/screenshots/user-story-6.2.png)
+    </details>
+    <br>
+
+    
+
+#### **Admin/Store Owner**
+* [User Story # 20](https://github.com/krandon1986/project-5-e-commerce-application/issues/20) 
+    
+    <details>
+    <summary>Add a Product</summary>
+
+    ![User Story 20.1](static/screenshots/user-story-20.1.png)
+    </details>
+    <br>
+
+    <details>
+    <summary>Edit a Product</summary>
+
+    ![User Story 20.2](static/screenshots/user-story-20.2.png)
+    ![User Story 20.3](static/screenshots/user-story-20.3.png)
+    ![User Story 20.4](static/screenshots/user-story-20.4.png)
+    </details>
+    <br>
+
+    <details>
+    <summary>Delete a Product</summary>
+
+    ![User Story 20.5](static/screenshots/user-story-20.5.png)
+    ![User Story 20.6](static/screenshots/user-story-20.6.png)
+    </details>
+    <br>
+
+  
+
+
 
 To log into the Heroku toolbelt CLI:
 
@@ -34,98 +362,3 @@ To log into the Heroku toolbelt CLI:
 
 You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
 
-### Connecting your Mongo database
-
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**June 18, 2024,** Add Mongo back into template
-
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
-
-**May 28 2024:** Fix Mongo and Links installs
-
-**April 26 2024:** Update node version to 16
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
