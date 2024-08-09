@@ -348,17 +348,59 @@ To see the full list, click [here.](https://github.com/users/krandon1986/project
     </details>
     <br>
 
-  
+
+## **E-Commerce Business Model**
+
+Hardwear is a business-to-consume model that sells shirts, jeans, duvets, and kitchenware directly to the customer. The customers can get a free delivery of any orders if they spend over $40., otherwise they will get charge $3.60 for delivery. The site is advertised on Facebook, but the other social links (X, Instagram and YouTube) would lead to the home page. Advertising on Facebook will help gain traction and a customer base depending on the post I would have to post in a regular. Users can sign-up to a newsletter when they visit the site. As the owner, I will be able to manage product detail and user's detail alreadu logged onto the site via Djando admin.
+
+### **Facebook Marketing**
+
+A business page has been made on Facebook when the site is connected to. The [Facebook link](https://www.facebook.com/profile.php?id=61563878406440) is available at this moment, but there is possiblity that the page could be taken down in the near future. So here is screenshot of the page as proof:
+
+<details>
+<summary>Facebook Pic:</summary>
+
+![Facebook Pic](static/screenshots/facebook-page.png)
+</details>
+
+### **SEO**
+
+Along with Facebook page to promote the site, it has a newsletter subscription which is supported via MailChimp to user to to keep in touch the site and receive newsletter once in while (if I was planning to make it a legit website)
+
+<details>
+<summary>Newsletter subscription</summary>
+
+![Newspaper subscription 1](static/screenshots/mailchimp-1.png)
+![Newspaper subscription 2](static/screenshots/mailchimp-2.png)
+</details>
+
+
+## **Admin Page 
 
 
 
-To log into the Heroku toolbelt CLI:
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+## **Deployment**
+This project was deployed in Heroduk using the Code Institute's terminal.
+- Step for deployment:
+    - Clone the the blogspace repository.
+    - Create a new Heroku app.
+    - Name the new Heroku app.
+    - Go on setting and click the 'Reveal Config Vars' button.
+    - Enter 'PORT' as a key and 8000 as value.
+    - Set the buildbacks to 'Python' and 'NodeJS' in that order. 
+    - Link the Heroku app to the blogspace repository.
+    - Click [Deploy Branch](https://blogspace-97bdcd968196.herokuapp.com/)
+
+## Credit
+- The 'Boutique Ado' walkthrough project is what I use to build my project. 
+
+- General Guidance
+    - [Font](https://fonts.google.com/)
+    - [Icons](https://fontawesome.com/)
+    - [Stipe](https://stripe.com/)
+    - [AWS](https://docs.aws.amazon.com/)
+    - [Mailchimp](https://mailchimp.com/?currency=GBP)
+    - 
 
