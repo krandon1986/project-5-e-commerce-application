@@ -1,31 +1,25 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+{% extends 'base.html' %} {% load static %} {% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
-{% endblock %}
-
-{% block content %}
-<div class="overlay"></div>
+</div>
+{% endblock %} {% block content %}
+<div class="overlay">
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center mt-3 text-black">
                 <h2 class="logo-font">ERROR 404! - Page Not Found</h2>
-                <hr>
+                <hr />
                 <p class="lead mb-5 text-black">The page you are looking for isn't available.</p>
-                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="text-uppercase">Return to shop</span>
-                    </a>
+                <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                    <span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text-uppercase">Return to shop</span>
+                </a>
             </div>
         </div>
-
-    </div>    
-</div> 
+    </div>
+</div>
 {% endblock %}
