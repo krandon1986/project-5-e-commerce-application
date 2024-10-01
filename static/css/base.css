@@ -270,6 +270,13 @@ input[name="q"]::placeholder {
     border-radius: 0;
 }
 
+/* Footers */
+
+.social-media {
+    margin-top: 1rem;
+    font-size: 200%;
+}
+
 /* Mailchimp */
 #mc_embed_signup {
     background: #fff;
@@ -291,6 +298,7 @@ input[name="q"]::placeholder {
         padding-top: 164px;
     }
 }
+
 
 /* pad the top bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
