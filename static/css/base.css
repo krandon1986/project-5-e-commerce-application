@@ -82,12 +82,22 @@ body {
     background: #ffff00 !important;
 }
 
-.overlay {
+.overlay-errors {
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
     position: relative;
+    background: #bfbfbf;
+    z-index: -1;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
     background: #bfbfbf;
     z-index: -1;
 }
