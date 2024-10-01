@@ -87,7 +87,7 @@ body {
     width: 100%;
     top: 0;
     left: 0;
-    position: fixed;
+    position: relative;
     background: #bfbfbf;
     z-index: -1;
 }
