@@ -92,6 +92,16 @@ body {
     z-index: -1;
 }
 
+.errors {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: relative;
+    background: #bfbfbf;
+    z-index: -1;
+}
+
 a.category-badge > span.badge:hover {
     background: #000 !important;
     color: #fff !important;
