@@ -1,15 +1,10 @@
-{% extends 'base.html' %} 
-{% load static %} 
-
-{% block page_header %}
+{% extends 'base.html' %} {% load static %} {% block page_header %}
 <div class="container header-container">
     <div class="row">
         <div class="col"></div>
     </div>
 </div>
-{% endblock %} 
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="errors">
     <div class="container-fluid">
         <div class="row">
@@ -17,14 +12,10 @@
                 <h2 class="logo-font">ERROR 500! - Internal Server Error</h2>
                 <hr />
                 <p class="lead mb-5 text-black">Apology, technical problems with the current page.</p>
-                <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                    <span class="icon">
-                        <i class="fas fa-chevron-left"></i>
-                    </span>
-                    <span class="text-uppercase">Return to shop</span>
-                </a>
+                <a href="{% url 'products' %}" class="shop-now-button btn-lg rounded-0 text-uppercase py-3">Back to Shopping</a>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
+
